@@ -1,5 +1,6 @@
 # Flutter application
-A mobile application build on flutter.
+A mobile application build on flutter to illustrate registration of users, 
+adding orders information and viewing the orders.
 
 ## Packages used
 - **Cupertino icons** for designing [pub.dev](https://pub.dev/packages/cupertino_icons)
@@ -23,3 +24,8 @@ flutter run
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
+## Versions used
+- **Flutter** 1.22.5
+- **Dart** 2.10.4
+
+## The apk link 
