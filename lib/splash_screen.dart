@@ -24,8 +24,13 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   navigateToHome() async {
+    print(authService.phoneNumber);
     await Future.delayed(const Duration(seconds: 3));
-    Navigator.of(context).pushReplacementNamed('/welcome');
+    if (authService.phoneNumber != null) {
+      Navigator.of(context).pushReplacementNamed("/add-order");
+    } else {
+      Navigator.of(context).pushReplacementNamed('/welcome');
+    }
   }
 
   @override

@@ -20,7 +20,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       await authService.sendOTPtoNumber(
           phoneNumber: phoneNumberController.text);
       setLoader(false);
-      Navigator.of(context).pushNamed("/verification",
+      Navigator.of(context).pushReplacementNamed("/verification",
           arguments: {'phoneNumber': phoneNumberController.text});
     }
   }
