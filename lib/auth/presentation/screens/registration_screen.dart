@@ -20,7 +20,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       await authService.sendOTPtoNumber(
           phoneNumber: phoneNumberController.text);
       setLoader(false);
-      Navigator.of(context).pushReplacementNamed("/verification",
+      Navigator.of(context).pushNamed("/verification",
           arguments: {'phoneNumber': phoneNumberController.text});
     }
   }
@@ -113,7 +113,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                       return "Phone number cannot be empty";
                                     }
                                     if (value.length < 10) {
-                                      return "Phone number has to be more than 10 characters";
+                                      return "Number has to be more than 10 characters";
                                     }
                                     return null;
                                   }),
@@ -140,7 +140,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     ],
                   )),
                   Container(
-                    height: 0,
                     width: MediaQuery.of(context).size.width * 0.75,
                     child: TextButton(
                         onPressed: previous,

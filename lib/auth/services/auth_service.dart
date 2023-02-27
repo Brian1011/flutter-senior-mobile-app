@@ -25,7 +25,7 @@ class AuthService extends ChangeNotifier {
 
   // call api
   Future<bool> sendOTPtoNumber({String phoneNumber}) async {
-    Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 2));
     return true;
   }
 

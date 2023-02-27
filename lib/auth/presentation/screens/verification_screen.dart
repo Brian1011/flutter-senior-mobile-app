@@ -22,6 +22,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
       await authService.verifyOTP(
           phoneNumber: phoneNumber, code: otpController.text);
       setLoader(false);
+      Navigator.of(context).pop();
+      Navigator.of(context).pop();
       Navigator.of(context).pushReplacementNamed("/add-order");
     }
   }
@@ -104,7 +106,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         height: 20,
                       ),
                       Container(
-                        height: 40,
+                        height: loading ? 60 : 40,
                         width: MediaQuery.of(context).size.width * 0.75,
                         child: TextButton(
                             onPressed: onSubmit,
@@ -119,7 +121,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ],
                   )),
                   Container(
-                    height: loading ? 60 : 40,
                     width: MediaQuery.of(context).size.width * 0.75,
                     child: TextButton(
                         onPressed: previous,

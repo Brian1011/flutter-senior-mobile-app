@@ -43,6 +43,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
 
   @override
   void dispose() {
+    // Clean up the controller when the widget is disposed.
     pickupPointController.dispose();
     dropPointController.dispose();
     weightController.dispose();
@@ -86,6 +87,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         height: 5,
                       ),
                       TextFormField(
+                        key: Key("pickupPoint"),
                         controller: pickupPointController,
                         decoration: InputDecoration(
                           hintText: "The address, Waiyaki way",
@@ -106,6 +108,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         height: 5,
                       ),
                       TextFormField(
+                        key: Key("dropPoint"),
                         controller: dropPointController,
                         decoration: InputDecoration(
                           hintText: "Ngong road, Lavington",
@@ -126,6 +129,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         height: 5,
                       ),
                       TextFormField(
+                        key: Key("weight"),
                         controller: weightController,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
@@ -141,6 +145,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         height: 5,
                       ),
                       TextFormField(
+                        key: Key("deliveryInstructions"),
                         controller: deliveryInstructionsController,
                         decoration: InputDecoration(
                           hintText: "Call me on 072343224",

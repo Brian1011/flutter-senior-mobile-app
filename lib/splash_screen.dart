@@ -27,21 +27,25 @@ class _SplashScreenState extends State<SplashScreen> {
 
   navigateToHome() async {
     await Future.delayed(const Duration(seconds: 3));
-    if (authService.phoneNumber != null) {
+    if (authService.phoneNumber.isNotEmpty) {
+      // user has logged in before
       Navigator.of(context).pushReplacementNamed("/home");
     } else {
+      // new user
       Navigator.of(context).pushReplacementNamed('/welcome');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Splash Screen'),
-      ),
-      body: const Center(
-        child: Text('Splash Screen'),
+    return SafeArea(
+      child: Scaffold(
+        body: const Center(
+          child: Text(
+            'Loading data...',
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
       ),
     );
   }

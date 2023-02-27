@@ -24,68 +24,65 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
               child: Column(
             children: [
               Text(
-                "List orders",
+                "List of orders",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
               ),
-              Expanded(
-                child:
-                    Consumer<OrderService>(builder: (context, orderService, _) {
-                  return orderService.orders.length == 0
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(flex: 4, child: Container()),
-                            Expanded(
-                              flex: 4,
-                              child: Container(
-                                child: Center(
-                                  child: Text(
-                                      "No orders yet. Press on the add button"),
-                                ),
+              Consumer<OrderService>(builder: (context, orderService, _) {
+                return orderService.orders.length == 0
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(flex: 4, child: Container()),
+                          Expanded(
+                            flex: 4,
+                            child: Container(
+                              child: Center(
+                                child: Text(
+                                    "No orders yet. Press on the add button"),
                               ),
                             ),
-                            Expanded(flex: 4, child: Container()),
-                          ],
-                        )
-                      : Expanded(
-                          child: ListView.builder(
-                              itemCount: orderService.orders.length,
-                              itemBuilder: (context, index) {
-                                Order order = orderService.orders[index];
-                                return Card(
-                                  child: Container(
-                                    color: index % 2 == 0
-                                        ? Colors.blue[100]
-                                        : Colors.white,
-                                    child: Column(
-                                      children: [
-                                        RecordView(
-                                          title: "Order ID",
-                                          subtitle: order.id.toString(),
-                                        ),
-                                        RecordView(
-                                          title: "Pickup Address",
-                                          subtitle: order.pickUpAddress,
-                                        ),
-                                        RecordView(
-                                          title: "Weight",
-                                          subtitle: order.weight,
-                                        ),
-                                        RecordView(
-                                          title: "Drop off address",
-                                          subtitle: order.dropOffAddress,
-                                        ),
-                                        RecordView(
-                                          title: "Instructions",
-                                          subtitle: order.deliveryInstructions,
-                                        ),
-                                      ],
-                                    ),
+                          ),
+                          Expanded(flex: 4, child: Container()),
+                        ],
+                      )
+                    : Expanded(
+                        child: ListView.builder(
+                            itemCount: orderService.orders.length,
+                            itemBuilder: (context, index) {
+                              Order order = orderService.orders[index];
+                              return Card(
+                                child: Container(
+                                  color: index % 2 == 0
+                                      ? Colors.grey[300]
+                                      : Colors.white,
+                                  child: Column(
+                                    children: [
+                                      RecordView(
+                                        title: "Order Id",
+                                        subtitle: order.id.toString(),
+                                      ),
+                                      RecordView(
+                                        title: "Pickup address",
+                                        subtitle: order.pickUpAddress,
+                                      ),
+                                      RecordView(
+                                        title: "Weight",
+                                        subtitle: order.weight,
+                                      ),
+                                      RecordView(
+                                        title: "Drop off address",
+                                        subtitle: order.dropOffAddress,
+                                      ),
+                                      RecordView(
+                                        title: "Instructions",
+                                        subtitle: order.deliveryInstructions,
+                                      ),
+                                    ],
                                   ),
-                                );
-                              }));
-                }),
-              )
+                                ),
+                              );
+                            }));
+              })
             ],
           )),
         ),
@@ -108,19 +105,25 @@ class RecordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(4.0),
       child: Row(
         children: [
-          Text(
-            "$title :",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+          Expanded(
+            flex: 4,
+            child: Text(
+              "$title: ",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          Text(
-            subtitle,
-            style: TextStyle(
-              color: Colors.grey[500],
+          Expanded(
+            flex: 8,
+            child: Text(
+              subtitle,
+              style: TextStyle(
+                color: Colors.black,
+              ),
             ),
           ),
         ],

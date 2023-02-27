@@ -10,7 +10,7 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
   onSubmit() {
-    Navigator.of(context).pushReplacementNamed("/register");
+    Navigator.of(context).pushNamed("/register");
   }
 
   @override
