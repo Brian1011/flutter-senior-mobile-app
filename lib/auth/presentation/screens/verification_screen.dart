@@ -15,7 +15,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
   onSubmit() {
     if (isFormValid()) {
-      Navigator.of(context).pushNamed("/otp");
+      Navigator.of(context).pushReplacementNamed("/add-order");
     }
   }
 

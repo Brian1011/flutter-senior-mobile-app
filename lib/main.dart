@@ -5,6 +5,7 @@ import 'package:test_app/auth/presentation/screens/verification_screen.dart';
 import 'package:test_app/auth/presentation/screens/welcome_screen.dart';
 import 'package:test_app/feature/presentation/feature_screen.dart';
 import 'package:test_app/feature/services/feature_service.dart';
+import 'package:test_app/order/presentation/add_order_screen.dart';
 import 'package:test_app/splash_screen.dart';
 
 void main() {
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/welcome': (context) => WelcomeScreen(),
         '/register': (context) => RegistrationScreen(),
         '/verification': (context) => VerificationScreen(),
+        '/add-order': (context) => AddOrderScreen(),
         '/home': (context) => ListFeaturesScreen(),
       },
     );
