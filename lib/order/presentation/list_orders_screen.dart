@@ -30,7 +30,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
               Expanded(
                 child:
                     Consumer<OrderService>(builder: (context, orderService, _) {
-                  return orderService.orders.length > 0
+                  return orderService.orders.length == 0
                       ? Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
