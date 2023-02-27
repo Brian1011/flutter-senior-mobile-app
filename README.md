@@ -29,8 +29,12 @@ flutter pub run build_runner build --delete-conflicting-outputs
 - **Dart** 2.10.4
 
 ## To deploy
-Run the source code with the above versions of dart and flutter
+1. Run the source code with the above versions of dart and flutter.
+
+
+Incase of any issues use the link below to test the apk file.
+Install it ona any android device and test it.
 
 ## The apk link 
-https://drive.google.com/file/d/1HLImHVTdVGUfzfu2BzYxNNcYUyk_2SaV/view?usp=share_link
+https://drive.google.com/file/d/1upDtQjeYim9VL5yvfeAC4WzT2UQM76kp/view?usp=share_link
 
