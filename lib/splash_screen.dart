@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   navigateToHome() async {
     await Future.delayed(const Duration(seconds: 3));
     if (authService.phoneNumber != null) {
-      Navigator.of(context).pushReplacementNamed("/add-order");
+      Navigator.of(context).pushReplacementNamed("/home");
     } else {
       Navigator.of(context).pushReplacementNamed('/welcome');
     }

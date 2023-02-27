@@ -17,58 +17,84 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Orders'),
-      ),
-      body: Container(
-        child: Center(
-            child: Column(
-          children: [
-            Consumer<OrderService>(builder: (context, orderService, _) {
-              return Expanded(
-                  child: ListView.builder(
-                      itemCount: orderService.orders.length,
-                      itemBuilder: (context, index) {
-                        Order order = orderService.orders[index];
-                        return Container(
-                          color:
-                              index % 2 == 0 ? Colors.blue[200] : Colors.white,
-                          child: Column(
-                            children: [
-                              RecordView(
-                                title: "Order ID",
-                                subtitle: order.id.toString(),
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          child: Center(
+              child: Column(
+            children: [
+              Text(
+                "List orders",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              ),
+              Expanded(
+                child:
+                    Consumer<OrderService>(builder: (context, orderService, _) {
+                  return orderService.orders.length > 0
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(flex: 4, child: Container()),
+                            Expanded(
+                              flex: 4,
+                              child: Container(
+                                child: Center(
+                                  child: Text(
+                                      "No orders yet. Press on the add button"),
+                                ),
                               ),
-                              RecordView(
-                                title: "Pickup Address",
-                                subtitle: order.pickUpAddress,
-                              ),
-                              RecordView(
-                                title: "Weight",
-                                subtitle: order.weight,
-                              ),
-                              RecordView(
-                                title: "Drop off address",
-                                subtitle: order.dropOffAddress,
-                              ),
-                              RecordView(
-                                title: "Instructions",
-                                subtitle: order.deliveryInstructions,
-                              ),
-                            ],
-                          ),
-                        );
-                      }));
-            })
-          ],
-        )),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          addNewOrder();
-        },
-        child: Icon(Icons.add),
+                            ),
+                            Expanded(flex: 4, child: Container()),
+                          ],
+                        )
+                      : Expanded(
+                          child: ListView.builder(
+                              itemCount: orderService.orders.length,
+                              itemBuilder: (context, index) {
+                                Order order = orderService.orders[index];
+                                return Card(
+                                  child: Container(
+                                    color: index % 2 == 0
+                                        ? Colors.blue[100]
+                                        : Colors.white,
+                                    child: Column(
+                                      children: [
+                                        RecordView(
+                                          title: "Order ID",
+                                          subtitle: order.id.toString(),
+                                        ),
+                                        RecordView(
+                                          title: "Pickup Address",
+                                          subtitle: order.pickUpAddress,
+                                        ),
+                                        RecordView(
+                                          title: "Weight",
+                                          subtitle: order.weight,
+                                        ),
+                                        RecordView(
+                                          title: "Drop off address",
+                                          subtitle: order.dropOffAddress,
+                                        ),
+                                        RecordView(
+                                          title: "Instructions",
+                                          subtitle: order.deliveryInstructions,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }));
+                }),
+              )
+            ],
+          )),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            addNewOrder();
+          },
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
