@@ -25,8 +25,12 @@ flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 ## Versions used
-- **Flutter** 1.22.5
+- **Flutter** 1.22.6
 - **Dart** 2.10.4
+
+## To deploy
+Run the source code with the above versions of dart and flutter
 
 ## The apk link 
 https://drive.google.com/file/d/1HLImHVTdVGUfzfu2BzYxNNcYUyk_2SaV/view?usp=share_link
+
