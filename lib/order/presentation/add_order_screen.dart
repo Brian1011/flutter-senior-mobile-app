@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:test_app/order/data/order.dart';
+import 'package:test_app/order/service/order_service.dart';
 import 'package:test_app/utils/buttons_util.dart';
 
 class AddOrderScreen extends StatefulWidget {
@@ -16,9 +19,18 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
   TextEditingController deliveryInstructionsController =
       TextEditingController();
 
-  onSubmit() {
+  onSubmit() async {
     if (isFormValid()) {
-      Navigator.of(context).pushNamed("/verification");
+      //Navigator.of(context).pushNamed("/verification");
+      Order order = Order(
+          pickUpAddress: pickupPointController.text,
+          dropOffAddress: dropPointController.text,
+          weight: weightController.text,
+          deliveryInstructions: deliveryInstructionsController.text);
+      await orderService.saveOrder(order);
+      Fluttertoast.showToast(msg: "Order added successfully");
+      // pop
+      // Navigator.of(context).pushReplacementNamed("/orders");
     }
   }
 
@@ -111,12 +123,6 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         hintText: "28.73",
                         border: OutlineInputBorder(),
                       ),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return "Please enter weight";
-                        }
-                        return null;
-                      },
                     ),
                     const SizedBox(
                       height: 20,
@@ -128,15 +134,9 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                     TextFormField(
                       controller: deliveryInstructionsController,
                       decoration: InputDecoration(
-                        labelText: "Call me on 072343224",
+                        hintText: "Call me on 072343224",
                         border: OutlineInputBorder(),
                       ),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return "Please enter delivery instructions";
-                        }
-                        return null;
-                      },
                     ),
                     const SizedBox(
                       height: 40,

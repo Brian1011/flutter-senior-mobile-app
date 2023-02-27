@@ -11,4 +11,18 @@ class Order {
   String weight;
   @Column(isNullable: true)
   String deliveryInstructions;
+
+  Order({
+    this.id,
+    this.pickUpAddress,
+    this.dropOffAddress,
+    this.weight,
+    this.deliveryInstructions,
+  });
+
+  // to string
+  @override
+  String toString() {
+    return 'Order{id: $id, pickUpAddress: $pickUpAddress, dropOffAddress: $dropOffAddress, weight: $weight, deliveryInstructions: $deliveryInstructions}';
+  }
 }

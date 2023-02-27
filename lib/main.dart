@@ -6,6 +6,7 @@ import 'package:test_app/auth/presentation/screens/welcome_screen.dart';
 import 'package:test_app/feature/presentation/feature_screen.dart';
 import 'package:test_app/feature/services/feature_service.dart';
 import 'package:test_app/order/presentation/add_order_screen.dart';
+import 'package:test_app/order/service/order_service.dart';
 import 'package:test_app/splash_screen.dart';
 
 import 'auth/services/auth_service.dart';
@@ -16,6 +17,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => featureService),
         ChangeNotifierProvider(create: (_) => authService),
+        ChangeNotifierProvider(create: (_) => orderService),
       ],
       child: MyApp(),
     ),
