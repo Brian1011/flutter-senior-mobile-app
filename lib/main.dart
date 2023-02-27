@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test_app/auth/presentation/screens/registration_screen.dart';
+import 'package:test_app/auth/presentation/screens/verification_screen.dart';
+import 'package:test_app/auth/presentation/screens/welcome_screen.dart';
 import 'package:test_app/feature/presentation/feature_screen.dart';
 import 'package:test_app/feature/services/feature_service.dart';
 import 'package:test_app/splash_screen.dart';
@@ -27,6 +30,9 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => SplashScreen(),
+        '/welcome': (context) => WelcomeScreen(),
+        '/register': (context) => RegistrationScreen(),
+        '/verification': (context) => VerificationScreen(),
         '/home': (context) => ListFeaturesScreen(),
       },
     );

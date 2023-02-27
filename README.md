@@ -9,6 +9,8 @@ A mobile application build on flutter.
 - **Provider** adapter for state management [pub.dev](https://pub.dev/packages/provider)
 - **Flutter toast** adapter for state management [pub.dev](https://pub.dev/packages/fluttertoast)
 - **Mockito** for mocking [pub.dev](https://pub.dev/packages/mockito)
+- **Pref** for storing data in local storage [pub.dev](https://pub.dev/packages/pref)
+- **Pin code fields** for OTP [pub.dev](https://pub.dev/packages/pin_code_fields)
 
 ## To run the project:
 ```
