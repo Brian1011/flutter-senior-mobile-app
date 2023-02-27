@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/auth/services/auth_service.dart';
 
 import 'database_helper.dart';
 
@@ -18,6 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   initializeDatabase() async {
     await db.init();
+    await authService.init();
     navigateToHome();
   }
 

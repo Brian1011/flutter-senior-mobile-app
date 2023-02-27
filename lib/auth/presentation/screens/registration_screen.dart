@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/auth/services/auth_service.dart';
 import 'package:test_app/utils/buttons_util.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -11,11 +12,23 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   TextEditingController phoneNumberController = TextEditingController();
+  bool loading = false;
 
-  onSubmit() {
+  onSubmit() async {
     if (isFormValid()) {
-      Navigator.of(context).pushNamed("/verification");
+      setLoader(true);
+      await authService.sendOTPtoNumber(
+          phoneNumber: phoneNumberController.text);
+      setLoader(false);
+      Navigator.of(context).pushNamed("/verification",
+          arguments: {'phoneNumber': phoneNumberController.text});
     }
+  }
+
+  setLoader(bool value) {
+    setState(() {
+      loading = value;
+    });
   }
 
   isFormValid() {
@@ -89,6 +102,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                             Expanded(
                               child: TextFormField(
+                                  controller: phoneNumberController,
                                   keyboardType: TextInputType.number,
                                   decoration: const InputDecoration(
                                       border: InputBorder.none,
@@ -111,17 +125,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         height: 20,
                       ),
                       Container(
-                        height: 40,
+                        height: loading ? 60 : 40,
                         width: MediaQuery.of(context).size.width * 0.75,
                         child: TextButton(
                             onPressed: onSubmit,
-                            child: Text("Confirm and continue >"),
+                            child: loading
+                                ? CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.white),
+                                  )
+                                : Text("Confirm and continue >"),
                             style: primaryButtonStyle),
                       )
                     ],
                   )),
                   Container(
-                    height: 40,
+                    height: 0,
                     width: MediaQuery.of(context).size.width * 0.75,
                     child: TextButton(
                         onPressed: previous,

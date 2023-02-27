@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:prefs/prefs.dart';
 
+AuthService authService = AuthService();
+
 class AuthService extends ChangeNotifier {
   String _phoneNumber;
   String get phoneNumber => _phoneNumber;

@@ -8,11 +8,14 @@ import 'package:test_app/feature/services/feature_service.dart';
 import 'package:test_app/order/presentation/add_order_screen.dart';
 import 'package:test_app/splash_screen.dart';
 
+import 'auth/services/auth_service.dart';
+
 void main() {
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => featureService),
+        ChangeNotifierProvider(create: (_) => authService),
       ],
       child: MyApp(),
     ),

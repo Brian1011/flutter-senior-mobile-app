@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:test_app/auth/services/auth_service.dart';
 import 'package:test_app/utils/buttons_util.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -12,11 +13,23 @@ class VerificationScreen extends StatefulWidget {
 class _VerificationScreenState extends State<VerificationScreen> {
   GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   TextEditingController otpController = TextEditingController();
+  String phoneNumber;
+  bool loading = false;
 
-  onSubmit() {
+  onSubmit() async {
     if (isFormValid()) {
+      setLoader(true);
+      await authService.verifyOTP(
+          phoneNumber: phoneNumber, code: otpController.text);
+      setLoader(false);
       Navigator.of(context).pushReplacementNamed("/add-order");
     }
+  }
+
+  setLoader(bool value) {
+    setState(() {
+      loading = value;
+    });
   }
 
   isFormValid() {
@@ -29,6 +42,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
   void previous() {
     Navigator.of(context).pop();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    Map<String, dynamic> arguments = ModalRoute.of(context).settings.arguments;
+    phoneNumber = arguments['phoneNumber'];
   }
 
   @override
@@ -88,13 +108,18 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         width: MediaQuery.of(context).size.width * 0.75,
                         child: TextButton(
                             onPressed: onSubmit,
-                            child: Text("Validate and continue >"),
+                            child: loading
+                                ? CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.white),
+                                  )
+                                : Text("Validate and continue >"),
                             style: primaryButtonStyle),
                       )
                     ],
                   )),
                   Container(
-                    height: 40,
+                    height: loading ? 60 : 40,
                     width: MediaQuery.of(context).size.width * 0.75,
                     child: TextButton(
                         onPressed: previous,
