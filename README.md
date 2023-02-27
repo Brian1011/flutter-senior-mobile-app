@@ -1,9 +1,11 @@
-# Flutter application
+# Flutter demo application
 A mobile application build on flutter to illustrate registration of drivers, 
 adding new orders to sql lite database and viewing the existing orders.
 
-## Demo
+## Demo App
 ![Recorded demo](https://github.com/Brian1011/flutter-senior-mobile-app/blob/main/assets/app_demo.gif)
+
+
 [Install demo apk here](https://drive.google.com/file/d/18dEF-NzD6K8sEmi46pxHMzly4kmNzhGM/view?usp=share_link)
 
 ## Project Achievements
@@ -11,7 +13,7 @@ adding new orders to sql lite database and viewing the existing orders.
 - Adding new orders
 - Viewing existing orders
 - Validating user input
-- Using sql lite database
+- Using sql local database
 - Successful Widget and database service testing
 - Memory management and optimization
 - User interface design
