@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:test_app/auth/presentation/screens/registration_screen.dart';
 import 'package:test_app/auth/presentation/screens/verification_screen.dart';
 import 'package:test_app/auth/presentation/screens/welcome_screen.dart';
-import 'package:test_app/feature/presentation/feature_screen.dart';
 import 'package:test_app/feature/services/feature_service.dart';
 import 'package:test_app/order/presentation/add_order_screen.dart';
+import 'package:test_app/order/presentation/list_orders_screen.dart';
 import 'package:test_app/order/service/order_service.dart';
 import 'package:test_app/splash_screen.dart';
 
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => RegistrationScreen(),
         '/verification': (context) => VerificationScreen(),
         '/add-order': (context) => AddOrderScreen(),
-        '/home': (context) => ListFeaturesScreen(),
+        '/home': (context) => ListOrdersScreen(),
       },
     );
   }

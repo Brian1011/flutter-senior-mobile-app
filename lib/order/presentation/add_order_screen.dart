@@ -28,9 +28,8 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
           weight: weightController.text,
           deliveryInstructions: deliveryInstructionsController.text);
       await orderService.saveOrder(order);
+      Navigator.of(context).pushNamed("/home");
       Fluttertoast.showToast(msg: "Order added successfully");
-      // pop
-      // Navigator.of(context).pushReplacementNamed("/orders");
     }
   }
 
@@ -40,6 +39,15 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
     } else {
       return false;
     }
+  }
+
+  @override
+  void dispose() {
+    pickupPointController.dispose();
+    dropPointController.dispose();
+    weightController.dispose();
+    deliveryInstructionsController.dispose();
+    super.dispose();
   }
 
   @override
