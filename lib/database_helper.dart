@@ -1,6 +1,7 @@
 import 'package:jaguar_query_sqflite/jaguar_query_sqflite.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:test_app/feature/data/feature_bean.dart';
+import 'package:test_app/order/data/order_bean.dart';
 
 DatabaseHelper db = DatabaseHelper();
 
@@ -10,6 +11,7 @@ class DatabaseHelper {
   DatabaseHelper._internal();
   SqfliteAdapter _adapter;
   FeatureBean featureBean;
+  OrderBean orderBean;
 
   init() async {
     try {
@@ -33,5 +35,7 @@ class DatabaseHelper {
   registerDatabaseAdapters() async {
     featureBean = new FeatureBean(_adapter);
     await featureBean.createTable(ifNotExists: true);
+    orderBean = new OrderBean(_adapter);
+    await orderBean.createTable(ifNotExists: true);
   }
 }
